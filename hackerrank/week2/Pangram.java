@@ -1,4 +1,4 @@
-package hackerrank;
+package hackerrank.week2;
 
 import java.util.HashMap;
 import java.util.Map;

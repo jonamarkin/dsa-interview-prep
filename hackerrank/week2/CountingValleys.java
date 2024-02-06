@@ -1,4 +1,4 @@
-package hackerrank;
+package hackerrank.week2;
 
 public class CountingValleys {
 
