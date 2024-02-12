@@ -4,38 +4,100 @@ public class MaxHeap {
 
     private int[] heap;
     private int size;
-    private int maxSize;
 
-    // The heap will be represented as an array
-    // The root will be at index 1
-    // We set the first element to be the largest possible integer since we are
-    // making a max heap
-
-    public MaxHeap(int size) {
-        this.maxSize = size;
-        this.size = 0;
-        heap = new int[this.maxSize + 1];
-        heap[0] = Integer.MAX_VALUE;
+    public MaxHeap(int capacity) {
+        heap = new int[capacity];
+        size = 0;
     }
 
-    // We can get a parent node by dividing the index by 2 since we are working with
-    // a binary heap structure and it is represented by an array also
-    private int parentNode(int position) {
-        return position / 2;
+    // Return the maximum element in the heap
+    public int getMax() {
+        if (size == 0) {
+            throw new IllegalStateException("The heap is empty");
+        }
+
+        return heap[0];
     }
 
-    // We can also get the left and right child of a parentNode by performing the ff
-    // operations
-    // Left child = 2*i
-    // Right child = (2*i) + 1
-    // If our root index was 0, our left and right chilren would haave been (2*i)+1
-    // and (2*i)+2 respectively
+    // Insert a new element into the heap
+    public void insert(int element) {
+        if (size == heap.length) {
+            throw new IllegalStateException("Heap size overflow");
+        }
 
-    private int leftChild(int parentNode) {
-        return 2 * parentNode;
+        heap[size++] = element;
+        heapifyUp(size - 1);
     }
 
-    private int rightChild(int parentNode) {
-        return (2 * parentNode) + 1;
+    public int extractMax() {
+        if (size == 0) {
+            throw new IllegalStateException("The heap is empty");
+        }
+
+        int max = heap[0];
+        heap[0] = heap[--size];
+        heapifyDown(0);
+        return max;
     }
+
+    private void heapifyUp(int index) {
+        while (index > 0 && (heap[parent(index)] < heap[index])) {
+            swap(index, parent(index));
+            index = parent(index);
+        }
+    }
+
+    private void heapifyDown(int index) {
+        while (leftChild(index) < size) {
+            int largest = index;
+            if (leftChild(index) < size && heap[leftChild(index)] > heap[largest]) {
+                largest = leftChild(index);
+            }
+
+            if (rightChild(index) < size && heap[rightChild(index)] > heap[largest]) {
+                largest = rightChild(index);
+            }
+
+            if (largest == index) {
+                break;
+            }
+            swap(index, largest);
+            index = largest;
+        }
+    }
+
+    // Helper methods for finding parent and children indices
+    private int parent(int index) {
+        return (index - 1) / 2;
+    }
+
+    private int leftChild(int index) {
+        return 2 * index + 1;
+    }
+
+    private int rightChild(int index) {
+        return 2 * index + 2;
+    }
+
+    // Swaps two elements in the heap array
+    private void swap(int i, int j) {
+        int temp = heap[i];
+        heap[i] = heap[j];
+        heap[j] = temp;
+    }
+
+    public static void main(String[] args) {
+        // Test the heap
+        MaxHeap maxHeap = new MaxHeap(5);
+        maxHeap.insert(10);
+        maxHeap.insert(20);
+        maxHeap.insert(15);
+        maxHeap.insert(30);
+        maxHeap.insert(25);
+        // maxHeap.insert(40);
+
+        System.out.println(maxHeap.extractMax());
+
+    }
+
 }
