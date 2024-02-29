@@ -1,6 +1,7 @@
 package hackerrank.week3;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,7 +25,7 @@ public class MaximumPerimeterTriangle {
 
         List<Integer> result = new ArrayList<>();
 
-
+        boolean foundTraingle = false;
         int maxPerimeter = 0;
         //First sort the list of sticks so that we can easily identify the longest side that could potentially form a triangle
         Collections.sort(sticks);
@@ -41,15 +42,20 @@ public class MaximumPerimeterTriangle {
                 if(perimeter >= maxPerimeter){
                     maxPerimeter = perimeter;
 
-
+                    result.clear();
                     result.add(sticks.get(i));
                     result.add(sticks.get(i+1));
                     result.add(sticks.get(i+2));
+                    foundTraingle = true;
                 }
 
             }
         }
 
+        if(!foundTraingle){
+            result.clear();
+            result.add(-1);
+        }
         return result;
 
     }
