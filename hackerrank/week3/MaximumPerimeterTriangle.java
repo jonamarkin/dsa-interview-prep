@@ -35,8 +35,8 @@ public class MaximumPerimeterTriangle {
 
         //Then iterate over the sorted error form the end to the beginning.
         //Start from the last but 2 element so that I can try and form a triangle with the preceding two sticks
-        for(int i = sticks.size()-3; i>=0; i--){
-            if((sticks.get(i)+sticks.get(i+1))>sticks.get(i+2)){
+        for(int i = sticks.size()-2; i>=0; i--){
+            if(((sticks.get(i)+sticks.get(i+1))>sticks.get(i+2)) &&((sticks.get(i)+sticks.get(i+2))>sticks.get(i+1)) && (sticks.get(i+2)+sticks.get(i+1))>sticks.get(i)){
                 //Meaning it can form a triangle
                 int perimeter  = sticks.get(i) +sticks.get(i+1) + sticks.get(i+2);
                 if(perimeter >= maxPerimeter){
@@ -58,6 +58,28 @@ public class MaximumPerimeterTriangle {
         }
         return result;
 
+    }
+
+
+    //AI Generated Solution
+    public static List<Integer> maximumPerimeterTriangle2(List<Integer> sticks) {
+        sticks.sort((a, b) -> b - a);
+
+        // Iterate through sticks to find the first valid triangle
+        for (int i = 0; i < sticks.size() - 3; i++) {
+            int side1 = sticks.get(i);
+            int side2 = sticks.get(i + 1);
+            int side3 = sticks.get(i + 2);
+
+            // Check if the current three sides form a valid triangle
+            if (side1 < side2 + side3 && side2 < side1 + side3 && side3 < side1 + side2) {
+                // Return the sides in non-decreasing order
+                return Arrays.asList(side3, side2, side1);
+            }
+        }
+
+        // No valid triangle found, return -1
+        return Arrays.asList(-1);
     }
 
     public static void main(String[] args) {
