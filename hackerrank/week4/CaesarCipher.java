@@ -2,7 +2,9 @@ package hackerrank.week4;
 
 public class CaesarCipher {
     public static void main(String[] args) {
-        System.out.println(caesarCipher("abcdefghijklmnopqrstuvwxyz", 3));
+        //System.out.println(caesarCipher("abcdefghijklmnopqrstuvwxyz", 3));
+        System.out.println(caesarCipher("middle-Outz", 2));
+        System.out.println(caesarCipherOpt("middle-Outz", 2));
     }
 
     /*
@@ -20,16 +22,21 @@ public class CaesarCipher {
 
         for (char stringChar : stringChars) {
             if (Character.isLetter(stringChar)) {
+
+                boolean isUpperCase = Character.isUpperCase(stringChar);
                 //System.out.println("Yah " + stringChars[i]);
                 for (int j = 0; j < alphabets.length; j++) {
 
-                    if (alphabets[j] == stringChar) {
+                    if (Character.toLowerCase(alphabets[j]) == Character.toLowerCase(stringChar)) {
 
                         //System.out.println("Match " + stringChars[i]);
                         //stringChars[i] = alphabets[(j+k) % alphabets.length];
-                        finalString.append(alphabets[(j + k) % alphabets.length]);
+                        //finalString.append(alphabets[(j + k) % alphabets.length]);
+                        finalString.append(isUpperCase?Character.toUpperCase(alphabets[(j + k) % alphabets.length]): alphabets[(j + k) % alphabets.length]);
                     }
                 }
+            }else{
+                finalString.append(stringChar);
             }
         }
 
@@ -45,5 +52,24 @@ public class CaesarCipher {
         }
 
         return alphabets;
+    }
+
+
+
+
+
+    public static String caesarCipherOpt(String s, int k) {
+        StringBuilder finalString  = new StringBuilder();
+
+        for (char c: s.toCharArray()){
+            if (Character.isLetter(c)){
+                char baseChar = Character.isUpperCase(c) ? 'A' : 'a';
+                finalString.append((char) ( baseChar + (c-baseChar +k)%26));
+            }else{
+                finalString.append(c);
+            }
+        }
+
+        return finalString.toString();
     }
 }
