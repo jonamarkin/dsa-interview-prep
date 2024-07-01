@@ -5,7 +5,7 @@ import java.util.List;
 public class GradeCalculation {
 
     public static void main(String[] args) {
-        List<Integer> grades = List.of(25,25,29,26,27,27,30,25,30,20,30,27);
+        List<Integer> grades = List.of(25,25,29,26,27,27,32,25,30,20,32,27);
         List<Integer> credits = List.of(9,9,9,9,6,9,9,9,6,6,6,9);
 
         int numerator = 0;
