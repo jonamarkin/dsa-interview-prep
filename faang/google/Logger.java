@@ -1,4 +1,4 @@
-package google;
+package faang.google;
 
 import java.util.HashMap;
 import java.util.Map;
