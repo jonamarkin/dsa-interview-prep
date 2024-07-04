@@ -26,7 +26,7 @@ public class ArrayRotation {
         //Normalize d to prevent unnecessary rotations - In case d is greater than the length of the array
         d=d%n;
 
-        //Append from do to the end of the array to the rotatedArray list
+        //Append from d to the end of the array to the rotatedArray list
         for(int i = d; i<n; i++){
             rotatedArray.add(arr.get(i));
         }
