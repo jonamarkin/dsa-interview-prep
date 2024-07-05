@@ -25,5 +25,11 @@ public class UniqueCharacters {
         return true;
     }
 
+    /*
+    Other methods
+    - Use two loops with will give On^2
+    - Sort and then scan fro left to right Onlogn
+
+     */
 
 }
