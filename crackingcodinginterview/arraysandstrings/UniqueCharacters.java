@@ -28,7 +28,8 @@ public class UniqueCharacters {
     /*
     Other methods
     - Use two loops with will give On^2
-    - Sort and then scan fro left to right Onlogn
+    - Sort and then scan from left to right Onlogn
+    - Read the characters of the string into a hashset and compare the hashset length to the string length
 
      */
 
