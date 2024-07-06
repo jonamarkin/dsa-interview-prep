@@ -10,6 +10,6 @@ public class ReverseCString {
      */
 
     public static String reverseString(String str){
-
+        return null;
     }
 }
