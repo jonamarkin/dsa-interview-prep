@@ -38,3 +38,6 @@ String finalResult = result.toString();
 
 - **Overall Complexity:** Given a total of \( n \) characters spread across all strings to be appended, using `StringBuilder` results in an overall time complexity of \( O(n) \), because each character is processed a constant number of times.
 
+## Reverse A String
+- Either use a String Builder and copy from end the of the original into it
+- Or reverse in place using two pointers, one at the start and one at the end, using a while loop
