@@ -8,6 +8,7 @@ public class RemoveStringDuplicates {
 
         char[] str = {'a', 'b', 'c', 'd', 'e', 'a', 'f', 'c', 'f', 'z'};
         System.out.println(removeDuplicates(str));
+        System.out.println(removeDuplicatesWithBiffer(str));
     }
 
     // Implementation without additional buffer
@@ -55,5 +56,52 @@ public class RemoveStringDuplicates {
 
         return Arrays.toString(str);
     }
+
+
+
+    //Implementation with additional buffer
+    /*
+    Use a boolean array of size 256 to represent the 256 chars available
+
+    Set all values to false
+    Loop through the string
+    Check if the value in the boolean array is true or not
+
+     */
+
+    public static String removeDuplicatesWithBiffer(char[] str){
+
+        if (str ==null || str.length<2){
+            return null;
+        }
+
+        int n = str.length;
+
+        boolean[] seenChars = new boolean[256];
+        for (int i = 0; i<n; i++){
+            seenChars[i] = false;
+        }
+
+        int nextUnique = 0;
+
+        for (int i = 0; i<n; i++){
+            if (!seenChars[str[i]]){
+                seenChars[str[i]] = true;
+                str[nextUnique] = str[i];
+                nextUnique++;
+            }
+
+        }
+
+        //str[nextUnique] = 0;
+        //To set the rest to null
+        for (int i = nextUnique; i < n; i++) {
+            str[i] = '\0';
+        }
+
+
+        return Arrays.toString(str);
+    }
+
 
 }
