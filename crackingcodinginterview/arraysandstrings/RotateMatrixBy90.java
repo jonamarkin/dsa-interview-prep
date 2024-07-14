@@ -46,4 +46,8 @@ public class RotateMatrixBy90 {
 
         return newMatrix;
     }
+
+    public static int[][] rotateInPlace(int[][] matrix){
+        return null;
+    }
 }
