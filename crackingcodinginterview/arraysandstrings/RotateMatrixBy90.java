@@ -17,9 +17,9 @@ public class RotateMatrixBy90 {
         int[][] rotatedMatrix = rotateNotInPlace(matrix);
 
         // Print rotated matrix
-        for (int i = 0; i < rotatedMatrix.length; i++) {
-            for (int j = 0; j < rotatedMatrix[i].length; j++) {
-                System.out.print(rotatedMatrix[i][j] + " ");
+        for (int[] ints : rotatedMatrix) {
+            for (int anInt : ints) {
+                System.out.print(anInt + " ");
             }
             System.out.println();
         }
