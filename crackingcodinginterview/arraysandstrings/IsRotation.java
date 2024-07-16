@@ -29,5 +29,6 @@ public class IsRotation {
     }
 
     private static boolean isSubString(String circulars1, String s2) {
+        return true;
     }
 }
