@@ -7,7 +7,18 @@ public class DeleteNodeInMiddle {
      */
 
     public static void main(String[] args) {
+        LinkedList linkedList = new LinkedList();
+        linkedList.addNode(1);
+        linkedList.addNode(2);
+        linkedList.addNode(3);
+        linkedList.addNode(2);
+        linkedList.addNode(4);
+        linkedList.addNode(3);
+        linkedList.display();
 
+        Node node = linkedList.head.next.next;
+
+        deleteNodeInMiddle(node);
     }
 
     /*
@@ -20,8 +31,14 @@ public class DeleteNodeInMiddle {
             return;
         }
 
+        System.out.println("Previous Data");
+        System.out.println(node.data);
+
         Node nexNode = node.next;
         node.data = nexNode.data;
         node.next = nexNode.next;
+
+        System.out.println("Current Data");
+        System.out.println(node.data);
     }
 }
