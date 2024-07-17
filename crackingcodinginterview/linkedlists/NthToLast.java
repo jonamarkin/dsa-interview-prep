@@ -20,6 +20,7 @@ public class NthToLast {
 
 
         System.out.println(nthToLast(linkedList, 2).data);
+        System.out.println(nthToLast_SecondSol(linkedList, 2).data);
 
     }
 
@@ -52,5 +53,43 @@ public class NthToLast {
         }
 
         return secondPointer;
+    }
+
+
+    /*
+    Another solution
+
+    Traverse linked list to count the number of elements
+
+    Determine the position of the nth element
+    Traverse the list again to find it and return it
+     */
+
+    static Node nthToLast_SecondSol(LinkedList linkedList, int nth){
+
+        if (linkedList.head==null || nth<=0){
+            return null;
+        }
+
+        int listLength = 0;
+
+        Node head = linkedList.head;
+        while(head.next!=null){
+            listLength++;
+            head = head.next;
+        }
+
+        int nthPosition = listLength - nth;
+
+
+        Node nthElement = linkedList.head;
+
+        for (int i=0; i<nthPosition; i++){
+            nthElement = nthElement.next;
+        }
+
+
+
+        return nthElement;
     }
 }
