@@ -10,8 +10,8 @@ public class AddNumbersAsList {
 
     public static void main(String[] args) {
         LinkedList firstList = new LinkedList();
-        firstList.addNode(1);
-        firstList.addNode(2);
+        firstList.addNode(9);
+        firstList.addNode(9);
         firstList.addNode(3);
 
         firstList.display();
@@ -25,9 +25,14 @@ public class AddNumbersAsList {
         secondList.display();
 
         addLists(firstList, secondList);
+
+        addLists_SecondSol(firstList, secondList);
     }
 
 
+    /*
+    Wrong solution because the numbers are stored in reverse order but this solution assumes the numbers are stored in normal order
+     */
     public static void addLists(LinkedList first, LinkedList second){
         Node headFirst = first.head;
         Node headSecond = second.head;
@@ -65,5 +70,50 @@ public class AddNumbersAsList {
 
         linkedList.display();
     }
+
+
+
+    public static void addLists_SecondSol(LinkedList first, LinkedList second){
+
+        Node result = addListsRecursive(first.head, second.head, 0);
+
+        LinkedList linkedList = new LinkedList();
+        linkedList.head = result;
+
+        System.out.println("result");
+        linkedList.display();
+    }
+
+
+    static Node addListsRecursive(Node node1, Node node2, int carry){
+        if (node1==null && node2 ==null && carry==0){
+            return null;
+        }
+
+        Node resultNode = new Node(carry);
+        int value = carry;
+
+        if (node1!=null){
+            value+= node1.data;
+        }
+
+        if (node2!=null){
+            value+= node2.data;;
+        }
+
+        resultNode.data = value%10;
+        int newCarry = value>=10?1:0;
+
+        if (node1!=null || node2 !=null || carry>0){
+            resultNode.next = addListsRecursive(
+                    node1 ==null ?null :node1.next,
+                    node2 ==null ? null: node2.next,
+                    newCarry
+            );
+        }
+
+        return resultNode;
+    }
+
 
 }
