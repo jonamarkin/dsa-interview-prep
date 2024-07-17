@@ -2,6 +2,11 @@ package crackingcodinginterview.linkedlists;
 
 public class DetectCycle {
 
+    /*
+
+    Given a circular linked list, implement an algorithm which returns node at the beginning of the loop
+     */
+
     public static void main(String[] args) {
 
     }
