@@ -12,7 +12,7 @@ public class PlusOne {
      */
 
     public static void main(String[] args) {
-        int[] arr = new int[]{9,9,9};
+        int[] arr = new int[]{8,9,9};
         System.out.println(Arrays.toString(plusOne(arr)));
     }
 
