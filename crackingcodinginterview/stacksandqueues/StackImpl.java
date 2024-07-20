@@ -11,9 +11,12 @@ public class StackImpl {
         top = newItem;
     }
 
-//    Node pop(){
-//        if (top!=null){
-//
-//        }
-//    }
+    Node pop(){
+        if (top!=null){
+            Node item = top;
+            top = item.next;
+            return item;
+        }
+        return null;
+    }
 }
