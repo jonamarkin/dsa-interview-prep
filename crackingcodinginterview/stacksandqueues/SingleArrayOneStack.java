@@ -11,9 +11,9 @@ public class SingleArrayOneStack {
     int top;
 
     public SingleArrayOneStack(int size){
-        this.maxSize = size;
-        this.stackArray = new int[maxSize];
-        this.top = -1;
+        maxSize = size;
+        stackArray = new int[maxSize];
+        top = -1;
     }
 
     public boolean isFull(){
@@ -48,4 +48,20 @@ public class SingleArrayOneStack {
         return stackArray[top];
     }
 
+
+    public static void main(String[] args) {
+        SingleArrayOneStack stack = new SingleArrayOneStack(5);
+
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        stack.push(40);
+        stack.push(50);
+
+        System.out.println("Top element is: " + stack.peek()); // Should print 50
+        System.out.println("Popped element is: " + stack.pop()); // Should print 50
+        System.out.println("Top element after pop is: " + stack.peek()); // Should print 40
+
+        stack.push(60); // Should print "Stack is full. Cannot push value."
+    }
 }
