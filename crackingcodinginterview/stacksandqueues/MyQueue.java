@@ -18,36 +18,40 @@ s1 will thus be ordered with the newest elements on the top, while s2 will have 
 We push the new elements onto s1, and peek and pop from s2.
 When s2 is empty, we’ll transfer all the elements from s1 onto s2, in reverse order.
  */
-public class MyQueue<T> {
-    Stack<T> s1, s2;
+public class MyQueue {
+    Stack<Integer> s1, s2;
 
-    public MyQueue(){
-        s1 = new Stack<T>();
-        s2 = new Stack<T>();
+    public MyQueue() {
+        s1 = new Stack<Integer>();
+        s2 = new Stack<Integer>();
     }
 
-    public int size(){
-        return s1.size() + s2.size();
+    public void push(int x) {
+        s1.push(x);
     }
 
-    public void add(T value){
-        s1.push(value);
+    public int pop() {
+        if (!s2.isEmpty()) {
+            return s2.pop();
+        }
+        while (!s1.isEmpty()) {
+            s2.push(s1.pop());
+        }
+        return s2.pop();
     }
 
-    public T peek(){
-        if (!s2.isEmpty()) return s2.peek();
-        while(s1.isEmpty()){
+    public int peek() {
+        if (!s2.isEmpty()) {
+            return s2.peek();
+        }
+        while (!s1.isEmpty()) {
             s2.push(s1.pop());
         }
         return s2.peek();
     }
 
-    public T remove(){
-        if (!s2.isEmpty()) return s2.pop();
-        while(s1.isEmpty()){
-            s2.push(s1.pop());
-        }
-        return s2.pop();
+    public boolean empty() {
+        return s1.isEmpty() && s2.isEmpty();
     }
 
 }
