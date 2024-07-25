@@ -45,4 +45,10 @@ public class BitChanges {
         return changes;
     }
 
+
+
+    public static int minChanges_opt(int n, int k) {
+        return 0;
+    }
+
 }
