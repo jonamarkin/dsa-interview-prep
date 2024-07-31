@@ -70,4 +70,25 @@ public class DeleteNodeInMiddle {
 
         return head;
     }
+
+
+    public static ListNode deleteNodeInMiddle2(ListNode head){
+        if (head ==null ||head.next==null){
+            return null;
+        }
+
+        ListNode slow = head;
+        ListNode faster = head;
+        ListNode prev = null;
+
+        while (faster!=null && faster.next!=null){
+            prev = slow;
+            slow = slow.next;
+            faster = faster.next.next;
+        }
+
+        prev.next = slow.next;
+
+        return head;
+    }
 }
