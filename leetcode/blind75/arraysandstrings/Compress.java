@@ -2,6 +2,9 @@ package leetcode.blind75.arraysandstrings;
 
 public class Compress {
 
+
+
+
     public int compress(char[] chars) {
 
         int index = 0;
@@ -28,5 +31,7 @@ public class Compress {
         }
 
         return index;
+
+
     }
 }
