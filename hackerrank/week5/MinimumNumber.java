@@ -97,7 +97,6 @@ public class MinimumNumber {
         if (!hasUpper) missingTypes++;
         if (!hasSpecial) missingTypes++;
 
-        // Calculate the minimum number of characters needed to make the password strong
 
         return Math.max(missingTypes, 6 - n);
     }
