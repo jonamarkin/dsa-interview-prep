@@ -13,7 +13,7 @@ public class SubstringsOfLength {
 
     public static void main(String[] args) {
         String s = "abcdef";
-        System.out.println(subStrings3(s, 3));
+        System.out.println(subStrings4(s, 3));
 
     }
 
@@ -87,6 +87,32 @@ public class SubstringsOfLength {
 
         return result;
 
+    }
+
+    /*
+    Precompute using String Builder
+    Like prefix sums and so on
+     */
+    public static List<String> subStrings4(String s, int k) {
+        List<String> result = new ArrayList<>();
+
+        if (k <= 0 || k > s.length()) {
+            return result;
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (int i=0; i<k; i++){
+            sb.append(s.charAt(i));
+        }
+        result.add(sb.toString());
+
+        for (int i=k;i<s.length();i++){
+            sb.deleteCharAt(0);
+            sb.append(s.charAt(i));
+            result.add(sb.toString());
+        }
+
+        return result;
     }
 
 
