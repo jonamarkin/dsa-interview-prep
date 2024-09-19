@@ -1,6 +1,8 @@
 package random;
 
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 
 public class SubstringsOfLength {
@@ -11,7 +13,7 @@ public class SubstringsOfLength {
 
     public static void main(String[] args) {
         String s = "abcdef";
-        System.out.println(subStrings1(s, 3));
+        System.out.println(subStrings3(s, 3));
 
     }
 
@@ -39,6 +41,53 @@ public class SubstringsOfLength {
     }
 
 
+
+    /*
+    Sliding Window Approach
+     */
+    public static List<String> subStrings2(String s, int k) {
+        List<String> result = new ArrayList<>();
+
+        if (k <= 0 || k > s.length()) {
+            return result;
+        }
+
+        for (int i=0; i<=s.length()-k; i++){
+            result.add(s.substring(i, i+k));
+        }
+
+        return result;
+    }
+
+    /*
+    Using Deque Approach
+     */
+
+    public static List<String> subStrings3(String s, int k) {
+        List<String> result = new ArrayList<>();
+
+        if (k <= 0 || k > s.length()) {
+            return result;
+        }
+
+        Deque<Character> deque = new LinkedList<>();
+        for (int i=0; i<s.length(); i++){
+            deque.addLast(s.charAt(i));
+
+            if (deque.size() ==k){
+                StringBuilder sb = new StringBuilder();
+                for (char c : deque){
+                    sb.append(c);
+                }
+                result.add(sb.toString());
+                deque.removeFirst();
+            }
+        }
+
+
+        return result;
+
+    }
 
 
 }
