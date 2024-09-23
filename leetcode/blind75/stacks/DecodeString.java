@@ -1,5 +1,7 @@
 package leetcode.blind75.stacks;
 
+import java.util.Stack;
+
 public class DecodeString {
 
     /*
@@ -23,8 +25,36 @@ public class DecodeString {
 
     public static String decodeString(String encodedString){
 
+        Stack<StringBuilder> stringStack = new Stack<>();
+        Stack<Integer> integerStack = new Stack<>();
+        int k = 0;
+        StringBuilder currentString = new StringBuilder();
+
+        for (char c: encodedString.toCharArray()){
+            if (Character.isDigit(c)){
+                //Calculate the full digit
+                k = k*10 + Character.getNumericValue(c);
+            } else if (c=='[') {
+                integerStack.push(k);
+                stringStack.push(currentString);
+
+                k=0;
+                currentString = new StringBuilder();
+
+            } else if (c==']') {
+                StringBuilder decodedString = stringStack.pop();
+                int repetition = integerStack.pop();
+
+                decodedString.append(String.valueOf(currentString).repeat(Math.max(0, repetition)));
+
+                currentString = decodedString;
+
+            }else{
+                currentString.append(c);
+            }
+        }
 
 
-        return null;
+        return currentString.toString();
     }
 }
