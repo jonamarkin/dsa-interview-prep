@@ -20,6 +20,19 @@ public class PathSum3 {
     }
 
     public int pathSumFrom(TreeNode node, long remainder){
+        if (node ==null){
+            return 0;
+        }
 
+        int count =0;
+
+        if (remainder == node.val){
+            count ++;
+        }
+
+        count +=pathSum(node.left, (int) (remainder-node.val));
+        count +=pathSumFrom(node.right, remainder - node.val);
+
+        return count;
     }
 }
