@@ -30,12 +30,12 @@ public class KeysAndRooms {
 
         int visitedRooms = 0;
 
-        while (!roomsQueue.isEmpty()){
+        while (!roomsQueue.isEmpty()) {
             int currentRoom = roomsQueue.poll();
             visitedRooms++;
 
-            for (int key: rooms.get(currentRoom)){
-                if (!visited[key]){
+            for (int key : rooms.get(currentRoom)) {
+                if (!visited[key]) {
                     visited[key] = true;
                     roomsQueue.offer(key);
                 }
@@ -46,26 +46,26 @@ public class KeysAndRooms {
     }
 
 
-//DFS Solution
-public boolean canVisitAllRooms2(List<List<Integer>> rooms) {
-    boolean[] visited = new boolean[rooms.size()];
-    dfs(rooms, 0, visited);
+    //DFS Solution
+    public boolean canVisitAllRooms2(List<List<Integer>> rooms) {
+        boolean[] visited = new boolean[rooms.size()];
+        dfs(rooms, 0, visited);
 
-    for (boolean v: visited){
-        if(!v) return false;
+        for (boolean v : visited) {
+            if (!v) return false;
+        }
+
+        return true;
     }
 
-    return true;
-}
-
-public void dfs(List<List<Integer>> rooms, int room, boolean[] visited){
+    public void dfs(List<List<Integer>> rooms, int room, boolean[] visited) {
         if (visited[room]) return;
 
         visited[room] = true;
-        for (int key: rooms.get(room)){
+        for (int key : rooms.get(room)) {
             dfs(rooms, key, visited);
         }
-}
+    }
 
 
 }
