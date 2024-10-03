@@ -1,5 +1,7 @@
 package faang.amazon;
 
+import java.util.Arrays;
+
 public class ReverseInteger {
 
     /*
@@ -10,22 +12,22 @@ public class ReverseInteger {
      */
 
     public int reverse(int x) {
-        String srtX = ""+x;
-        char[] stringArr = srtX.toCharArray();
+        int reversed = 0;
 
-        int start = 0;
-        int end = stringArr.length-1;
+        while(x!=0){
+            int digit = x%10;
 
-        while(start<end){
-            char temp = stringArr[start];
-            stringArr[start] = stringArr[end];
-            stringArr[end] = temp;
+            if ((reversed > Integer.MAX_VALUE /10) || (reversed == Integer.MAX_VALUE /10 && digit >7)){
+                return 0;
+            }
+            if (reversed < Integer.MIN_VALUE /10 || (reversed == Integer.MIN_VALUE/10 && digit <8)){
+                return 0;
+            }
 
-            start++;
-            end--;
+            reversed = reversed *10 + digit;
+            x/=10;
         }
 
-
-        return 0;
+        return reversed;
     }
 }

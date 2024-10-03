@@ -1,5 +1,7 @@
 package leetcode.blind75.heap;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.PriorityQueue;
 
 public class KthLargestElement {
@@ -26,5 +28,22 @@ public class KthLargestElement {
         }
 
         return minHeap.peek();
+    }
+
+    public static void main(String[] args) {
+        int[] arr = new int[]{3,2,3,1,2,4,5,5,6};
+
+        System.out.println(findKthLargest2(arr, 4));
+    }
+
+    public static int findKthLargest2(int[] nums, int k) {
+        // your solution here
+        Arrays.sort(nums);
+        //Collections.reverse(Arrays.asList(nums));
+
+        int result = nums[nums.length-k];
+
+        return result;
+
     }
 }
