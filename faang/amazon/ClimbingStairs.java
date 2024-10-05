@@ -20,4 +20,17 @@ public class ClimbingStairs {
 
         return one;
     }
+
+    //Non-optimal solution with recursion
+
+    public int climbStairs2(int n) {
+        if (n==0){
+            return 1;
+        }
+        if (n<0){
+            return 0;
+        }
+
+        return climbStairs2(n-1) + climbStairs2(n-2);
+    }
 }
