@@ -20,4 +20,29 @@ public class SingleNumberII {
 
         return 0;
     }
+
+    public int singleNumber2(int[] nums) {
+        //Declare array to store the count of each bit position
+        int[] bitCounts = new int[32];
+
+        //Count the number rof times each bit is set across all numbers
+        for (int num : nums){
+            for (int i=0; i<32; i++){
+                //Check if the ith bit is set
+                if ((num & (1<<i))!=0){
+                    bitCounts[i]++;
+                }
+            }
+        }
+
+        //Reconstruct the single number from the bit counts
+        int result = 0;
+        for (int i=0; i<32; i++){
+            if (bitCounts[i] %3 !=0){
+                result |=(1<<i);
+            }
+        }
+
+        return result;
+    }
 }

@@ -19,4 +19,14 @@ public class SingleNumber {
 
         return 0;
     }
+
+    public int singleNumber2(int[] nums) {
+        int xor = 0;
+
+        for (int num : nums){
+            xor = xor ^ num;
+        }
+
+        return xor;
+    }
 }
