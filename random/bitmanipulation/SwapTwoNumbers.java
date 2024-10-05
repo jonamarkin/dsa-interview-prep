@@ -1,4 +1,4 @@
-package faang.amazon;
+package random.bitmanipulation;
 
 public class SwapTwoNumbers {
     /*
