@@ -17,6 +17,11 @@ public class RottingOranges {
      */
 
 
+    /*
+    Time Complexity: O (m * n )
+    Space Complexity: O ( m * n)
+     */
+
     public int orangesRotting(int[][] grid) {
         if (grid == null || grid.length == 0) {
             return -1;
