@@ -1,0 +1,81 @@
+/*
+
+Design and write a library to determine a winner in a fake card game called ComboBreaker.
+*  The game consists of 30 cards, where each card has a Value which is a number between 0-9 and a Color which is Red, Green, or Blue (RGB)
+* Each player gets 3 cards
+* Each game consists of some number of players, and winners are determined by who has the best Combo:
+  * Color Combo (3 cards same color)
+  * Value Combo (3 cards same value)
+  * Pair Combo (2 cards with same value, and 1 random card)
+
+new combo:
+    * Double (2 of a color)
+
+class Card {
+  int value;
+  enum color;
+}
+
+Player getWinners(List<Card> p1, List<Card> p2){
+
+
+}
+
+class Combination{
+    enum Color;
+    enum comboType;
+    int value;
+}
+
+private String score(List<Card> cards){
+
+    Combination combination = new Combination();
+
+    Set<color> setColor = new HashSet<>();
+    for(Card card: cards){
+        setColor.add(card.color);
+    }
+
+    // R>G>B
+    //
+    if(setColor.size()==1){
+        combination.setColor(setColor.get(0);
+        combination.setComboType(Color);
+    }
+
+    Set<color> setValue = new HashSet<>();
+    for(Card card: cards){
+        setValue.add(card.color);
+
+    }
+
+    // R>G>B
+    //
+    if(setValue.size()==1){
+        combination.setValue(setValue.get(0);
+        cobination.setCombotype("Value")
+    }
+
+
+
+    Map<Integer, Integer> valueCount = new HashMap<>();
+
+    for(Card card: cards){
+        valueCount.put(card.getValue(), valueCount.getOrDefault(card.getValue(), 0) +1);
+
+    }
+
+    Map<Color, Integer> colorCount = new HashMap<>();
+
+    for(Card card: cards){
+        colorCount.put(card.getColor(), colorCount.getOrDefault(card.getColor(), 0) +1);
+
+    }
+
+
+
+
+
+}
+
+*/
