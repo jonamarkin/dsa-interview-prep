@@ -1,9 +1,6 @@
 package random.cpc;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.TreeSet;
+import java.util.*;
 
 public class SlidingWindowMax {
 
@@ -15,7 +12,7 @@ public class SlidingWindowMax {
     public static void main(String[] args) {
 
         int[] arr = {1, 3, -1, -3, 5, 3, 6, 7};
-        System.out.println(Arrays.toString(maxSlidingWindowBST(arr, 3)));
+        System.out.println(Arrays.toString(maxSlidingWindowDeque(arr, 3)));
     }
 
     //Trivial Solution
@@ -90,6 +87,88 @@ public class SlidingWindowMax {
         return maxArray;
     }
 
+
+
+    //Heap solution
+    public static int[] maxSlidingWindowHeap(int[] nums, int k) {
+        int n = nums.length;
+
+        if (k>n){
+            return new int[0];
+        }
+
+        //PriorityQueue with custom comparator to act as max heap
+        PriorityQueue<HeapElement> maxHeap = new PriorityQueue<>(
+                (a,b)-> b.value!=a.value ? Integer.compare(b.value, a.value) : Integer.compare(b.index, a.index)
+        );
+
+        //Add first k-1 elements to the heap
+        for (int i=0; i<k-1; i++){
+            maxHeap.add(new HeapElement(nums[i], i));
+        }
+
+        int [] maxArray = new int[n-k+1];
+
+        //Sliding window processing
+        for (int i=k-1; i<n; i++){
+            maxHeap.add(new HeapElement(nums[i],i));
+
+            //Remove elements outside the current window
+            while(!maxHeap.isEmpty() && maxHeap.peek().index < i - (k-1)){
+                maxHeap.poll();
+            }
+
+            maxArray[i-k+1] = maxHeap.peek().value;
+        }
+
+
+        return maxArray;
+
+    }
+
+
+
+    //Linear solution with deque
+    public int[] maxSlidingWindowDeque(int[] nums, int k) {
+        int n = nums.length;
+
+        if (k > n) {
+            return new int[0]; // Return an empty array
+        }
+
+        Deque<Integer> deque = new ArrayDeque<>();
+        int[] maxArray = new int[n - k + 1];
+
+        // Process the first k elements
+        for (int i = 0; i < k; i++) {
+            while (!deque.isEmpty() && nums[i] > nums[deque.peekLast()]) {
+                deque.pollLast();
+            }
+            deque.offerLast(i);
+        }
+
+        maxArray[0] = nums[deque.peekFirst()];
+
+        // Process remaining elements
+        for (int i = k; i < n; i++) {
+            // Remove elements that are out of the current window
+            while (!deque.isEmpty() && deque.peekFirst() <= i - k) {
+                deque.pollFirst();
+            }
+
+            // Remove elements smaller than the current element
+            while (!deque.isEmpty() && nums[i] > nums[deque.peekLast()]) {
+                deque.pollLast();
+            }
+
+            deque.offerLast(i);
+            maxArray[i - k + 1] = nums[deque.peekFirst()];
+        }
+
+        return maxArray;
+
+    }
+
 }
 
 class Element implements Comparable<Element>{
@@ -125,4 +204,15 @@ class Element implements Comparable<Element>{
     }
 
 
+}
+
+
+class HeapElement {
+    int value;
+    int index;
+
+    public HeapElement(int value, int index) {
+        this.value = value;
+        this.index = index;
+    }
 }
