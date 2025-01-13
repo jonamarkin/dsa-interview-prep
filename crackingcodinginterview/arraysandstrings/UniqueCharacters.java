@@ -1,21 +1,39 @@
 package crackingcodinginterview.arraysandstrings;
 
+import java.util.HashSet;
+
 public class UniqueCharacters {
     public static void main(String[] args) {
-        System.out.println(allUnique("abcdd"));
+
+        System.out.println(checkUnique("string"));
     }
 
     /*
     Implement an algorithm to determine if a string has all unique characters. What if you can not use additional data structures?
      */
 
-    public static boolean allUnique(String str){
+    public static boolean checkUnique(String string) {
+
+        HashSet<Character> characterHashSet = new HashSet<>();
+
+        for (char c : string.toCharArray()) {
+            if (characterHashSet.contains(c)) {
+                return false;
+            }
+            characterHashSet.add(c);
+        }
+
+        return true;
+    }
+
+
+    public static boolean allUnique(String str) {
         boolean[] chars = new boolean[256];
 
-        for (int i=0; i<str.length(); i++){
-            int charInt =  str.charAt(i);
+        for (int i = 0; i < str.length(); i++) {
+            int charInt = str.charAt(i);
 
-            if(chars[charInt]){
+            if (chars[charInt]) {
                 return false;
             }
 
