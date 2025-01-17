@@ -129,7 +129,7 @@ public class SlidingWindowMax {
 
 
     //Linear solution with deque
-    public int[] maxSlidingWindowDeque(int[] nums, int k) {
+    public static int[] maxSlidingWindowDeque(int[] nums, int k) {
         int n = nums.length;
 
         if (k > n) {
