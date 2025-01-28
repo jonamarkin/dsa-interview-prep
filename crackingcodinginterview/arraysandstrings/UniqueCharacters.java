@@ -5,7 +5,7 @@ import java.util.HashSet;
 public class UniqueCharacters {
     public static void main(String[] args) {
 
-        System.out.println(checkUnique("string"));
+        System.out.println(allUnique("string"));
     }
 
     /*
@@ -32,6 +32,8 @@ public class UniqueCharacters {
 
         for (int i = 0; i < str.length(); i++) {
             int charInt = str.charAt(i);
+
+            System.out.println(charInt);
 
             if (chars[charInt]) {
                 return false;
