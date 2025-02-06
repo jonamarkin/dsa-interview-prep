@@ -1,4 +1,4 @@
-package leetcode.top150;
+package leetcode.top150.arraysandstrings;
 
 public class RemoveElement {
 

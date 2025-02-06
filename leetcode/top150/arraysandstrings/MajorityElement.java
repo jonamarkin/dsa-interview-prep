@@ -1,4 +1,4 @@
-package leetcode.top150;
+package leetcode.top150.arraysandstrings;
 
 import java.util.HashMap;
 import java.util.Map;
