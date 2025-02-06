@@ -14,6 +14,7 @@ public class JumpGame {
         int[] nums = {3,2,1,0,4};
 
         System.out.println(canJump(nums));
+        System.out.println(canJump2(nums));
     }
 
     public static boolean canJump(int[] nums) {
@@ -37,5 +38,24 @@ public class JumpGame {
         return false;
     }
 
+
+
+    //Optimal Solution
+    public static boolean canJump2(int[] nums) {
+
+        int farthest = 0;
+
+        for (int i=0; i<nums.length; i++){
+            if (i > farthest) return false;
+
+            farthest = Math.max(farthest, i+nums[i]);
+
+            if (farthest >= nums.length-1){
+                return true;
+            }
+        }
+
+        return false;
+    }
 
 }
