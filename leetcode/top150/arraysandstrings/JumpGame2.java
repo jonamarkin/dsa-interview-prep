@@ -65,7 +65,7 @@ public class JumpGame2 {
 
             for(int i=0; i<size; i++){
                 int index = queue.poll();
-                for(int j=i; j<=nums[i]; j++){
+                for(int j=i; j<=nums[index]; j++){
                     int next = index + j;
                     if(next>=n-1) return jumps;
 
