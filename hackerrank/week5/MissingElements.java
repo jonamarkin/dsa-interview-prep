@@ -1,9 +1,6 @@
 package hackerrank.week5;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class MissingElements {
 
@@ -80,6 +77,33 @@ public class MissingElements {
         for(Map.Entry<Integer, Integer> mapEntry: arrHashMap.entrySet()){
             if(mapEntry.getValue()>0){
                 result.add(mapEntry.getKey());
+            }
+        }
+
+
+        return result;
+    }
+
+    public static List<Integer> missingNumbers3(List<Integer> arr, List<Integer> brr) {
+        //Using two pointer approach + sorting
+
+        List<Integer> result = new ArrayList<>();
+
+        Collections.sort(arr);
+        Collections.sort(brr);
+
+        int first = 0;
+        int second = 0;
+
+        while(second < brr.size()){
+            if(first < arr.size() && arr.get(first).equals(brr.get(second))){
+                first++;
+                second++;
+            }else{
+                if(result.isEmpty() || result.get(result.size()-1)!=brr.get(second)){
+                    result.add(brr.get(second));
+                }
+                second++;
             }
         }
 
