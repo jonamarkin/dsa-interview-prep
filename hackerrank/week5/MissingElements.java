@@ -60,4 +60,31 @@ public class MissingElements {
 
         return result;
     }
+
+
+    //Using one hashmap
+    public static List<Integer> missingNumbers2(List<Integer> arr, List<Integer> brr) {
+        // Write your code here
+        HashMap<Integer, Integer> arrHashMap = new HashMap<>();
+
+        List<Integer> result = new ArrayList<>();
+
+        for(int i: brr){
+            arrHashMap.put(i, arrHashMap.getOrDefault(i, 0)+1);
+        }
+
+        for(int i: arr){
+            arrHashMap.put(i, arrHashMap.getOrDefault(i, 0)-1);
+        }
+
+        for(Map.Entry<Integer, Integer> mapEntry: arrHashMap.entrySet()){
+            if(mapEntry.getValue()>0){
+                result.add(mapEntry.getKey());
+            }
+        }
+
+
+        return result;
+    }
+
 }
