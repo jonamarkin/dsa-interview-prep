@@ -28,4 +28,9 @@ public class RunLength {
 
         return sb.toString();
     }
+
+    public static void main(String[] args) {
+        String input = "aaaabbbbccccdddd";
+        System.out.println(encode(input));
+    }
 }
