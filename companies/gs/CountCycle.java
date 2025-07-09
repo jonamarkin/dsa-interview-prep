@@ -51,9 +51,45 @@ public class CountCycle {
         return cycleLength;
     }
 
+    public static int countCycle2(int[] arr, int startIndex) {
+        int n = arr.length;
+        if(startIndex < 0 || startIndex >= n){
+            return -1;
+        }
+
+        boolean[] visited = new boolean[n];
+        int current = startIndex;
+
+        while(!visited[current]){
+            visited[current] = true;
+
+            if (arr[current] < 0 || arr[current] >= n){
+                return -1;
+            }
+
+            current = arr[current];
+        }
+
+        int cycleStart = current;
+        int cycleLength = 1;
+        current =arr[current];
+
+        while(current != cycleStart){
+            if (current <0 || current >= n){
+                return -1;
+            }
+
+            current = arr[current];
+            cycleLength++;
+        }
+
+        return cycleLength;
+    }
+
     public static void main(String[] args) {
         int[] arr = {1,2,0,4,1};
         System.out.println(countCycle(arr, 0));
+        System.out.println(countCycle2(arr, 0));
     }
 
 
