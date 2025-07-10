@@ -19,4 +19,24 @@ public class RotatedArrayMinFinder {
 
         return arr[low];
     }
+
+    public static void main(String args[]) {
+        boolean result = true;
+        result = result && findMin(new int[] { 3, 4, 5, 6, 1, 2 }) == 1;
+        result = result && findMin(new int[] { 2, 1 }) == 1;
+        result = result && findMin(new int[] { 1 }) == 1;
+
+        try {
+            findMin(null);
+            result = false;
+        } catch (Exception e) {
+            result = result && true;
+        }
+
+        if (result) {
+            System.out.println("All tests pass");
+        } else {
+            System.out.println("There are test failures");
+        }
+    }
 }
