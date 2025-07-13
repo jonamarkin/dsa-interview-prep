@@ -41,6 +41,26 @@ public class MaximizeSightSeeing {
 
     }
 
+    public static int maximizeSightSeeingDP(int[] times, int[] points, int totalDays){
+        int n = times.length;
+        int [][] dp = new int[n+1][totalDays+1];
+
+        for(int i=1; i<=n; i++){
+            for(int d = 0; d<=totalDays; d++ ){
+                if(times[i-1]<=d){
+                    dp[i][d] = Math.max(
+                            dp[i-1][d],
+                            points[i-1] + dp[i-1][d-times[i-1]]
+                    );
+                }else{
+                    dp[i][d] = dp[i-1][d];
+                }
+            }
+        }
+
+        return dp[n][totalDays];
+    }
+
     public static void main(String[] args) {
         int[] time = {2, 3, 4};
         int[] points = {40, 50, 65};
@@ -53,6 +73,7 @@ public class MaximizeSightSeeing {
 
         System.out.println(maximizeSightSeeingRecursive(time, points, totalDays, time.length-1));
         System.out.println(maximizeSightSeeingMemo(time, points, totalDays, time.length-1, memo));
+        System.out.println(maximizeSightSeeingDP(time, points, totalDays));
     }
 
 }
