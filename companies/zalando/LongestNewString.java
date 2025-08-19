@@ -22,4 +22,28 @@ public class LongestNewString {
         }
 
     }
+
+
+    public String longestString2(int x, int y, int z) {
+        StringBuilder sb = new StringBuilder();
+        
+        if(y>x){
+            sb.append("BB");
+        }
+        
+        int minCount = Math.min(y,x);
+        
+        for(int i=0; i<minCount; i++){
+            sb.append("AABB");
+        }
+        
+        for(int i=0; i<z; i++){
+            sb.append("AB");
+        }
+        
+        if(x>y){
+            sb.append("AA");
+        }
+        return sb.toString();
+    }
 }
