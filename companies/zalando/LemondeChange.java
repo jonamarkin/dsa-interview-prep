@@ -9,7 +9,7 @@ public class LemondeChange {
 
             if(bill == 5){
                 five++;
-            }else if(bill == 10){
+            }else if(bill == 10){ 
                 if(five ==0) return false;
                 five--;
                 ten++;
